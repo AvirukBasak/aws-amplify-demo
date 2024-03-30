@@ -1,0 +1,34 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mevorishpgrooms-dev-32bef-authRole",
+      "UnauthRoleArn": "arn:aws:iam::617039457399:role/amplify-mevorishpgrooms-dev-32bef-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::617039457399:role/amplify-mevorishpgrooms-dev-32bef-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-mevorishpgrooms-dev-32bef-deployment",
+      "UnauthRoleName": "amplify-mevorishpgrooms-dev-32bef-unauthRole",
+      "StackName": "amplify-mevorishpgrooms-dev-32bef",
+      "StackId": "arn:aws:cloudformation:ap-south-1:617039457399:stack/amplify-mevorishpgrooms-dev-32bef/e2784690-ee58-11ee-8dbc-02c2e62a62c3",
+      "AmplifyAppId": "d1li73uk73jgu2",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-mevorishpgrooms-dev-32bef-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "ProtectedSayHello": {
+          "deploymentBucketName": "amplify-mevorishpgrooms-dev-32bef-deployment",
+          "s3Key": "amplify-builds/ProtectedSayHello-2f396b78657475747930-build.zip"
+        },
+        "SayHello": {
+          "deploymentBucketName": "amplify-mevorishpgrooms-dev-32bef-deployment",
+          "s3Key": "amplify-builds/SayHello-492f6577366772697039-build.zip"
+        }
+      },
+      "auth": {
+        "mevorishpgrooms0e0e7b63": {}
+      },
+      "api": {
+        "RestApiV2": {}
+      }
+    }
+  }
+}

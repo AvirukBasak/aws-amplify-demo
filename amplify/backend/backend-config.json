@@ -1,0 +1,101 @@
+{
+  "api": {
+    "RestApiV2": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "SayHello"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "ProtectedSayHello"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "mevorishpgrooms0e0e7b63": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL",
+          "GENDER"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "ProtectedSayHello": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "SayHello": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_ProtectedSayHello_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ProtectedSayHello"
+        }
+      ]
+    },
+    "AMPLIFY_function_ProtectedSayHello_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ProtectedSayHello"
+        }
+      ]
+    },
+    "AMPLIFY_function_SayHello_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "SayHello"
+        }
+      ]
+    },
+    "AMPLIFY_function_SayHello_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "SayHello"
+        }
+      ]
+    }
+  }
+}

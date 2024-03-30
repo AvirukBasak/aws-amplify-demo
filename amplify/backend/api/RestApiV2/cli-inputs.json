@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "paths": {
+    "/say-hello/{name}": {
+      "name": "/say-hello/{name}",
+      "lambdaFunction": "SayHello",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/protected-say-hello/{name}": {
+      "name": "/protected-say-hello/{name}",
+      "lambdaFunction": "ProtectedSayHello",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}
