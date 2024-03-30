@@ -19,7 +19,7 @@ console.log("accessToken:", accessToken);
 
 const authToken = idToken || accessToken;
 
-Amplify.configure(awsConfig.awsExports, {
+Amplify.configure(awsConfig.amplifyConfig, {
   API: {
     REST: {
       headers: async () => {
