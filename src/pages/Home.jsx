@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as API from "aws-amplify/api";
-import  * as Auth from "aws-amplify/auth";
+import * as Auth from "aws-amplify/auth";
 
 import styles from "../styles/Home.module.css";
 
@@ -19,11 +19,21 @@ export default function Home() {
    * @param {string} str
    */
   function sayHello(str) {
-    API.get({
-      apiName: "RestApiV2",
-      path: `/say-hello/${str}`,
-    })
-      .response.then((response) => response.body.json())
+    Auth.fetchAuthSession()
+      .then((session) => session?.tokens?.accessToken?.toString())
+      .then(
+        (authToken) =>
+          API.get({
+            apiName: "RestApiV2",
+            path: `/say-hello/${str}`,
+            options: {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            },
+          }).response
+      )
+      .then((response) => response.body.json())
       .then((data) => JSON.parse(JSON.stringify(data || {})))
       .then((data) => alert(data.message))
       .catch((error) => console.error(error));
@@ -64,8 +74,10 @@ export default function Home() {
           onChange={(e) => setHelloText(e.target.value)}
         />
         <button onClick={(e) => sayHello(helloText)}>Say Hello</button>
-        <button onClick={(e) => protectedSayHello(helloText)}>Protected Say Hello</button>
-        <button onClick={e => signOut()}>Sign Out</button>
+        <button onClick={(e) => protectedSayHello(helloText)}>
+          Protected Say Hello
+        </button>
+        <button onClick={(e) => signOut()}>Sign Out</button>
       </div>
     </div>
   );
