@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Auth from "@aws-amplify/auth";
+import * as Auth from "aws-amplify/auth";
 
 const initialFormState = {
   email: "",
@@ -28,9 +28,7 @@ export default function SignIn() {
         password: formData.password,
       });
 
-      localStorage.setItem("username", formData.email);
       localStorage.setItem("isSignedIn", "true");
-
       navigate("/home", { replace: true });
     } catch (error) {
       console.error(error);

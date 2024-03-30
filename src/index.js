@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { Amplify } from "aws-amplify";
-import Auth from "@aws-amplify/auth";
+import * as Auth from "@aws-amplify/auth";
 
 import { awsConfig } from "./config/aws";
 
@@ -11,12 +11,6 @@ import "./styles/global.css";
 
 const idToken = (await Auth.fetchAuthSession()).tokens?.idToken?.toString();
 const accessToken = (await Auth.fetchAuthSession()).tokens?.accessToken?.toString();
-
-console.log("authSession:", await Auth.fetchAuthSession());
-console.log("credentials:", await Auth.getCurrentUser());
-console.log("idToken:", idToken);
-console.log("accessToken:", accessToken);
-
 const authToken = idToken || accessToken;
 
 Amplify.configure(awsConfig.amplifyConfig, {

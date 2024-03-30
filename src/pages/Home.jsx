@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "@aws-amplify/api";
-import Auth from "@aws-amplify/auth";
+import * as API from "aws-amplify/api";
+import  * as Auth from "aws-amplify/auth";
 
-import "@aws-amplify/ui-react/styles.css";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -13,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     const isSignedIn = localStorage.getItem("isSignedIn");
-    if (!isSignedIn) navigate("/", { replace: true });
+    if (!isSignedIn) navigate("/login", { replace: true });
   }, [navigate]);
 
   /**
@@ -47,9 +46,8 @@ export default function Home() {
   async function signOut() {
     try {
       await Auth.signOut();
-
-      localStorage.clear();
-      navigate("/", { replace: true });
+      localStorage.removeItem("isSignedIn");
+      navigate("/login", { replace: true });
     } catch (error) {
       console.error(error);
     }
